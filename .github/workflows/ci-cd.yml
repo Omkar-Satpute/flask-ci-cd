@@ -63,7 +63,8 @@ jobs:
       run: |
         mkdir -p ~/.kube
         echo "$KUBE_CONFIG" > ~/.kube/config
-        kubectl version --client
+        kubectl config current-context  
+        kubectl cluster-info
 
     - name: Deploy to Kubernetes
       run: |
