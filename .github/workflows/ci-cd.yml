@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  IMAGE_NAME: ghcr.io/${{ toLowerCase(github.repository_owner) }}/flask-app
+  IMAGE_NAME: ghcr.io/omkar-satpute/flask-app
   KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
 
 jobs:
