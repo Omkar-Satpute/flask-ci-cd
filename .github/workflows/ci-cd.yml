@@ -46,7 +46,7 @@ jobs:
         docker push $IMAGE_NAME:${{ github.sha }}
         docker push $IMAGE_NAME:latest
 
-  deploy:
+    deploy:
     needs: build-and-test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
@@ -58,6 +58,12 @@ jobs:
       uses: azure/setup-kubectl@v1
       with:
         version: 'v1.22.0'
+
+    - name: Set Kubernetes context using azure/k8s-set-context
+      uses: azure/k8s-set-context@v3
+      with:
+        method: kubeconfig
+        kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
     - name: Configure Kubernetes
       run: |
