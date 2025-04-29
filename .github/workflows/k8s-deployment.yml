@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: ghcr.io/<your-github-username>/flask-app:latest
+        image: ghcr.io/omkar-satpute/flask-ci-cd:latest
         ports:
         - containerPort: 5000
         resources:
