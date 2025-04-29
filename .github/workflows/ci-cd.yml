@@ -46,7 +46,7 @@ jobs:
         docker push $IMAGE_NAME:${{ github.sha }}
         docker push $IMAGE_NAME:latest
 
-    deploy:
+  deploy:
     needs: build-and-test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
@@ -68,7 +68,7 @@ jobs:
     - name: Configure Kubernetes
       run: |
         mkdir -p ~/.kube
-        echo "$KUBE_CONFIG" > ~/.kube/config
+        echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
         kubectl version --client
 
     - name: Deploy to Kubernetes
